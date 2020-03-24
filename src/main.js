@@ -8,6 +8,7 @@ import "echarts/map/js/china";
 import jquery from "jquery";
 // 引入css
 import "./assets/css/base.css";
+import "./assets/iconfont/iconfont.css";
 
 // 安装插件
 Vue.prototype.$echarts = echarts;

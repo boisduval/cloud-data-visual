@@ -9,13 +9,13 @@
         <p>
           {{ title }}
         </p>
-        <h3 class="button" @click="goBack" v-show="name !== '全国'">
+        <h3 class="button font-larger" @click="goBack" v-show="name !== '全国'">
           {{ prevName }}
         </h3>
       </div>
       <div class="company">
         <img src="../assets/img/logo.png" alt="公司图标" height="100%" />
-        <h3 class="name">
+        <h3 class="name font-larger">
           浙江衡睿科技
         </h3>
       </div>
@@ -29,7 +29,100 @@
           v-show="name === '全国' || name === '省级'"
         ></div>
         <!--市级信息-->
-        <div class="city-info" v-show="name === '市级'"></div>
+        <div class="city-info" v-show="name === '市级'">
+          <div class="flex-column city-info-box">
+            <div class="flex city-info-item">
+              <div class="flex-row flex-center" style="height: 100%">
+                <p class="title font-large">
+                  BESS
+                </p>
+                <ul>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex city-info-item">
+              <div class="flex-row flex-center" style="height: 100%">
+                <p class="title font-large">
+                  BESS
+                </p>
+                <ul>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex city-info-item">
+              <div class="flex-row flex-center" style="height: 100%">
+                <p class="title font-large">
+                  BESS
+                </p>
+                <ul>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                  <li>
+
+                    <p class="font-larger flex-row" style="align-items: center">
+                      <i class="iconfont icon-dianxiang"></i>
+                      杭州塔里科技公司    一期储能项目
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--背景-->
         <div class="svg" id="svg">
           <svg
@@ -1188,8 +1281,8 @@ export default {
         // 重新加载地图
         case "省级":
           this.name = "全国";
-          this.selected = 'china';
-          this.getMap()
+          this.selected = "china";
+          this.getMap();
           break;
         //  由市级返回省级
         //  只需要隐藏市级信息，显示地图
@@ -1260,7 +1353,8 @@ export default {
   float: right;
   /*width: 200px;*/
   margin-right: 100px;
-  height: 40px;
+  height: 50px;
+  line-height: 50px;
 }
 .company img {
   display: inline-block;
@@ -1288,9 +1382,52 @@ export default {
   position: absolute;
 }
 .city-info {
-  width: 100%;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 2%;
   height: 100%;
   position: absolute;
+  background: url("../assets/img/project_list.png") center no-repeat;
+  background-size: contain;
+}
+.city-info-box {
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 90%;
+  height: 85%;
+}
+.city-info-item {
+  background: url("../assets/img/project_list_shadow.png") center no-repeat;
+  background-size: 100% 100%;
+  margin-top: 2px;
+}
+.city-info-item .title {
+  position: absolute;
+  left: 7%;
+  width: 20px;
+  text-align: center;
+  color: #46a6b5;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
+.city-info-item ul {
+  width: 90%;
+  margin-left: 3%;
+}
+.city-info-item li {
+  margin-top: 5px;
+  border: #46a6b5 1px solid;
+  padding: 5px 0;
+  color: #fff;
+}
+.city-info-item li p {
+  text-align: left;
+}
+.city-info-item li i {
+  height: 100%;
+  float: left;
+  margin: 0.3% 10px 0 8px;
+  font-size: inherit;
 }
 .svg {
   position: absolute;
@@ -1307,13 +1444,13 @@ export default {
   height: 100%;
   position: absolute;
   left: 10%;
-  top: 0;
+  top: 5%;
 }
 .right-box {
   height: 100%;
   position: absolute;
   right: 9%;
-  top: 0;
+  top: 5%;
 }
 .top {
   margin-bottom: 2%;
@@ -1362,5 +1499,35 @@ export default {
 }
 p {
   text-align: center;
+}
+@media screen and (max-width: 1300px) {
+  .city-info-item .title {
+    width: 15px;
+  }
+  /*.city-info-item li i {*/
+  /*  height: 26px;*/
+  /*  line-height: 26px;*/
+  /*  width: 26px;*/
+  /*}*/
+}
+@media screen and (min-width: 1300px) {
+  .city-info-item .title {
+    width: 20px;
+  }
+  /*.city-info-item li i {*/
+  /*  height: 26px;*/
+  /*  line-height: 26px;*/
+  /*  width: 26px;*/
+  /*}*/
+}
+@media screen and (min-width: 1500px) {
+  .city-info-item .title {
+    width: 24px;
+  }
+  /*.city-info-item li i {*/
+  /*  height: 30px;*/
+  /*  line-height: 30px;*/
+  /*  width: 30px;*/
+  /*}*/
 }
 </style>
