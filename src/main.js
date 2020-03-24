@@ -2,7 +2,16 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+// 引入插件
+import echarts from "echarts";
+import "echarts/map/js/china";
+import jquery from "jquery";
+// 引入css
+import "./assets/css/base.css";
 
+// 安装插件
+Vue.prototype.$echarts = echarts;
+Vue.prototype.$ = jquery;
 Vue.config.productionTip = false;
 
 new Vue({
