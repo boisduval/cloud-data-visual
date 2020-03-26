@@ -9,11 +9,14 @@ import jquery from "jquery";
 // 引入css
 import "./assets/css/base.css";
 import "./assets/iconfont/iconfont.css";
+import BgSvg from "./components/BgSvg";
 
 // 安装插件
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$ = jquery;
 Vue.config.productionTip = false;
+// 安装组件
+Vue.component("BgSvg", BgSvg);
 
 new Vue({
   router,
