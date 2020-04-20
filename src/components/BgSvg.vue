@@ -10,7 +10,7 @@
     enable-background="new 0 0 1920 800"
     xml:space="preserve"
   >
-    <g id="左下信息框">
+    <g>
       <g>
         <line
           opacity="0.5"
@@ -108,7 +108,7 @@
           font-family="'MicrosoftYaHeiLight'"
           font-size="18"
         >
-          信息标题
+          {{ title2 }}
         </text>
       </g>
       <polygon
@@ -243,7 +243,7 @@
           font-family="'MicrosoftYaHeiLight'"
           font-size="18"
         >
-          实时播报
+          {{ title1 }}
         </text>
       </g>
       <polygon
@@ -380,7 +380,7 @@
           font-family="'MicrosoftYaHeiLight'"
           font-size="18"
         >
-          信息标题
+          {{ title4 }}
         </text>
       </g>
       <polygon
@@ -517,7 +517,7 @@
           font-family="'MicrosoftYaHeiLight'"
           font-size="18"
         >
-          信息标题
+          {{ title3 }}
         </text>
       </g>
       <polygon
@@ -810,11 +810,14 @@
     </g>
   </svg>
 </template>
-
 <script>
 export default {
-  name: "Svg"
+  props: {
+    title1: String,
+    title2: String,
+    title3: String,
+    title4: String
+  }
 };
 </script>
-
 <style scoped></style>

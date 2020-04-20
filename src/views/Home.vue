@@ -5,8 +5,8 @@
     </header>
     <div class="cube"></div>
     <div>
-      <div class="title-top">
-        <p>
+      <div class="title-top flex-row flex-center">
+        <p class="font-large">
           {{ title }}
         </p>
         <h3 class="button font-larger" @click="goBack" v-show="name !== '全国'">
@@ -14,7 +14,7 @@
         </h3>
       </div>
       <div class="company">
-        <img src="../assets/img/logo.png" alt="公司图标" height="100%" />
+        <img src="../assets/img/logo.png" alt="公司图标" />
         <h3 class="name font-larger">
           浙江衡睿科技
         </h3>
@@ -37,19 +37,19 @@
                   BESS
                 </p>
                 <ul>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
@@ -64,19 +64,19 @@
                   UPS
                 </p>
                 <ul>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
@@ -91,19 +91,19 @@
                   TPS
                 </p>
                 <ul>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
                     </p>
                   </li>
-                  <li>
+                  <li @click="goResult()">
                     <p class="font-larger flex-row" style="align-items: center">
                       <i class="iconfont icon-dianxiang"></i>
                       杭州塔里科技公司 一期储能项目
@@ -115,43 +115,48 @@
           </div>
         </div>
         <!--背景-->
-        <div class="svg" id="svg">
-          <BgSvg />
+        <div class="svg">
+          <BgSvg
+            :title1="rEAL_TIME_BROADCAST.totalname"
+            :title2="pROJECT_CASE.totalname"
+            :title3="pROJECT_OUTCOME.totalname"
+            :title4="iNDUSTRY_DYNAMICS.totalname"
+          />
         </div>
         <!--左方框-->
         <div class="left-box flex-column flex-center">
           <div style="position: relative">
-            <div class="top">
+            <div class="top" v-if="this.nUMBER_OF_INSTALLED">
               <p class="title font-small">
-                装机数
+                {{ this.nUMBER_OF_INSTALLED.name }}
               </p>
               <p class="value font-large">
-                116
+                {{ this.nUMBER_OF_INSTALLED.value }}
               </p>
               <p class="unit font-small">
-                台
+                {{ this.nUMBER_OF_INSTALLED.unit }}
               </p>
             </div>
             <div class="middle">
               <p class="title font-small">
-                装机数
+                {{ this.aCCOMPLISHMENT.name }}
               </p>
               <p class="value font-large">
-                116
+                {{ this.aCCOMPLISHMENT.value }}
               </p>
               <p class="unit font-small">
-                台
+                {{ this.aCCOMPLISHMENT.unit }}
               </p>
             </div>
             <div class="bottom">
-              <p class="title flex font-small">
-                装机数
+              <p class="title font-small">
+                {{ this.tOTAL_CAPACITY.name }}
               </p>
-              <p class="value flex font-large">
-                116
+              <p class="value font-large">
+                {{ this.tOTAL_CAPACITY.value }}
               </p>
-              <p class="unit flex font-small">
-                台
+              <p class="unit font-small">
+                {{ this.tOTAL_CAPACITY.unit }}
               </p>
             </div>
           </div>
@@ -161,142 +166,54 @@
           <div style="position: relative">
             <div class="top">
               <p class="title font-small">
-                装机数
+                {{ this.dEVICE_BESS.name }}
               </p>
               <p class="value font-large">
-                116
+                {{ this.dEVICE_BESS.value }}
               </p>
               <p class="unit font-small">
-                台
+                {{ this.dEVICE_BESS.unit }}
               </p>
             </div>
             <div class="middle">
               <p class="title font-small">
-                装机数
+                {{ this.dEVICE_UPS.name }}
               </p>
               <p class="value font-large">
-                116
+                {{ this.dEVICE_UPS.value }}
               </p>
               <p class="unit font-small">
-                台
+                {{ this.dEVICE_UPS.unit }}
               </p>
             </div>
             <div class="bottom">
-              <p class="title flex font-small">
-                装机数
+              <p class="title font-small">
+                {{ this.dEVICE_TPS.name }}
               </p>
-              <p class="value flex font-large">
-                116
+              <p class="value font-large">
+                {{ this.dEVICE_TPS.value }}
               </p>
-              <p class="unit flex font-small">
-                台
+              <p class="unit font-small">
+                {{ this.dEVICE_TPS.unit }}
               </p>
             </div>
           </div>
         </div>
         <!--左上信息-->
-        <div class="left-top">
-          <ul>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-          </ul>
+        <div class="left-top" v-if="rEAL_TIME_BROADCAST">
+          <ScrollNews :arr="rEAL_TIME_BROADCAST.valueUnits"></ScrollNews>
         </div>
         <!--右上信息-->
-        <div class="right-top">
-          <ul>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-          </ul>
+        <div class="right-top" v-if="pROJECT_CASE">
+          <ScrollNews :arr="pROJECT_CASE.valueUnits"></ScrollNews>
         </div>
         <!--左下信息-->
-        <div class="left-bottom">
-          <ul>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-          </ul>
+        <div class="left-bottom" v-if="pROJECT_OUTCOME">
+          <ScrollNews :arr="pROJECT_OUTCOME.valueUnits"></ScrollNews>
         </div>
         <!--右下信息-->
-        <div class="right-bottom">
-          <ul>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-            <li class="font-small flex-column flex-center">
-              <p>浙江省HRE--A256-01项目完工111111111</p>
-            </li>
-          </ul>
+        <div class="right-bottom" v-if="iNDUSTRY_DYNAMICS">
+          <ScrollNews :arr="iNDUSTRY_DYNAMICS.valueUnits"></ScrollNews>
         </div>
       </div>
       <div class="bottom-info"></div>
@@ -312,21 +229,7 @@ export default {
   components: {},
   data() {
     return {
-      myData: [
-        {
-          name: "北京",
-          value: [
-            {
-              type: "回收量",
-              num: "11"
-            },
-            {
-              type: "出货量",
-              num: "21"
-            }
-          ]
-        }
-      ],
+      myData: "",
       provinces: [
         "shanghai",
         "hebei",
@@ -402,7 +305,31 @@ export default {
       selected: "china",
       name: "全国",
       prevName: "",
-      tempName: ""
+      tempName: "",
+      nUMBER_OF_INSTALLED: "",
+      aCCOMPLISHMENT: "",
+      tOTAL_CAPACITY: "",
+      dEVICE_BESS: "",
+      dEVICE_UPS: "",
+      dEVICE_TPS: "",
+      rEAL_TIME_BROADCAST: "",
+      pROJECT_CASE: "",
+      pROJECT_OUTCOME: "",
+      iNDUSTRY_DYNAMICS: "",
+      arr: [
+        {
+          title: "装机数量",
+          unit: "台"
+        },
+        {
+          title: "装机数量",
+          unit: "台"
+        },
+        {
+          title: "装机数量",
+          unit: "台"
+        }
+      ]
     };
   },
   computed: {
@@ -421,10 +348,69 @@ export default {
   methods: {
     getMap() {
       var myMap = this.$echarts.init(document.getElementById("myMap"));
+      this.loadMap();
+      myMap.on("click", ev => {
+        // 如果点击的是一个省，那就切换到这个省的地图
+        if (this.isProvince(ev.name)) {
+          this.selected = ev.name;
+          this.name = "省级";
+          this.prevName = "全国";
+          this.tempName = this.selected;
+          // 从外部加载这个省的地图文件
+          this.loadScriptMap(ev.name, this.loadMap);
+          this.getData(this.selected);
+        } else {
+          this.prevName = this.tempName;
+          this.selected = ev.name;
+          // 否则切换中国地图，隐藏地图，显示省级信息框，改标题
+          // this.selected = "china";
+          // this.getMap();
+          this.getData(this.selected);
+          this.name = "市级";
+        }
+      });
+      setTimeout(function() {
+        window.onresize = () => {
+          myMap.resize();
+        };
+      }, 200);
+    },
+    loadMap() {
+      let myMap = this.$echarts.init(document.getElementById("myMap"));
       myMap.setOption({
         backgroundColor: "rgba(0,0,0,0)",
         title: {},
-        tooltip: {},
+        tooltip: {
+          trigger: "item",
+          formatter: params => {
+            if (params.name !== "") {
+              var res = params.name + "<br/>";
+              if (params.data) {
+                var arrays = params.data.value;
+                for (var i = 0; i < arrays.length; i++) {
+                  res +=
+                    arrays[i].name +
+                    " : " +
+                    arrays[i].value +
+                    arrays[i].unit +
+                    "<br/>";
+                }
+                return res;
+              } else {
+                for (var j = 0; j < this.arr.length; j++) {
+                  res += this.arr[j].name + " : 0" + this.arr[j].unit + "<br/>";
+                }
+                return res;
+              }
+            }
+          },
+          backgroundColor: "rgba(255,255,255,0.8)",
+          textStyle: {
+            color: "black"
+          },
+          borderColor: "#4594EC",
+          borderWidth: 1
+        },
         series: {
           map: this.selected,
           name: "数据",
@@ -447,29 +433,6 @@ export default {
           center: ["50%", "50%"]
         }
       });
-      myMap.on("click", ev => {
-        // 如果点击的是一个省，那就切换到这个省的地图
-        if (this.isProvince(ev.name)) {
-          this.selected = ev.name;
-          this.name = "省级";
-          this.prevName = "全国";
-          this.tempName = this.selected;
-          // 从外部加载这个省的地图文件
-          this.loadScriptMap(ev.name, this.getMap);
-        } else {
-          this.prevName = this.tempName;
-          this.selected = ev.name;
-          // 否则切换中国地图，隐藏地图，显示省级信息框，改标题
-          // this.selected = "china";
-          // this.getMap();
-          this.name = "市级";
-        }
-      });
-      setTimeout(function() {
-        window.onresize = () => {
-          myMap.resize();
-        };
-      }, 200);
     },
     // 判断当前要加载的地图是不是省？
     isProvince(name) {
@@ -481,7 +444,6 @@ export default {
     loadScriptMap(name, callback) {
       // 获取这个省的拼音名字 name = '四川' => pinyinName = 'sichuan'
       let pinyinName = this.provinces[this.provincesText.indexOf(name)];
-      console.log(pinyinName);
       // 引入这个对应的地图JS，如果是在项目中要打包，请将这些文件提取出来，放在静态资源中
       // build的时候这些文件不会被打包，无可加载资源地图是不会显示的！！！！
       // eslint-disable-next-line no-unused-vars
@@ -496,69 +458,73 @@ export default {
         case "省级":
           this.name = "全国";
           this.selected = "china";
-          this.getMap();
+          this.loadMap();
+          this.getData(this.selected);
           break;
         //  由市级返回省级
         //  只需要隐藏市级信息，显示地图
         case "市级":
           this.name = "省级";
           this.prevName = "全国";
+          this.selected = this.tempName;
+          this.getData(this.selected);
           break;
       }
     },
-    scroll(dom) {
-      let timer = null;
-      // hover 清空定时器
-      dom
-        .hover(
-          () => {
-            clearInterval(timer);
-          },
-          () => {
-            // 离开启动定时器
-            timer = setInterval(() => {
-              this.scrollList(dom);
-            }, 1000);
-          }
-        )
-        .trigger("mouseleave");
+    goResult() {
+      window.location.href = "http://sf28090049.wicp.vip:8082/statement/";
     },
-    //  滚动动画
-    scrollList(obj) {
-      let scrollHeight = this.$(".left-top ul li:first").height();
-      obj.stop().animate({ marginTop: -scrollHeight }, 600, () => {
-        obj
-          .css({ marginTop: 0 })
-          .find(".left-top ul li:first")
-          .appendTo(obj);
-      });
+    getData(selected) {
+      var num;
+      switch (this.name) {
+        case "全国":
+          num = 2;
+          break;
+        case "省级":
+          num = 3;
+          break;
+        case "市级":
+          num = 4;
+          break;
+      }
+      let url = `/api/Exhibition/GetMessage?SystemToken=0&Page=${num}&Name=${selected}`;
+      this.$axios
+        .get(url)
+        .then(res => {
+          let data = res.data.data;
+          this.nUMBER_OF_INSTALLED = data.nUMBER_OF_INSTALLED;
+          this.aCCOMPLISHMENT = data.aCCOMPLISHMENT;
+          this.tOTAL_CAPACITY = data.tOTAL_CAPACITY;
+          this.dEVICE_BESS = data.dEVICE_BESS;
+          this.dEVICE_UPS = data.dEVICE_UPS;
+          this.dEVICE_TPS = data.dEVICE_TPS;
+          this.rEAL_TIME_BROADCAST = data.rEAL_TIME_BROADCAST;
+          this.pROJECT_CASE = data.pROJECT_CASE;
+          this.pROJECT_OUTCOME = data.pROJECT_OUTCOME;
+          this.iNDUSTRY_DYNAMICS = data.iNDUSTRY_DYNAMICS;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    getMapData() {
+      let url = `/api/Exhibition/GetStatePageInfo?SystemToken=0&StateCode=86`;
+      this.$axios
+        .get(url)
+        .then(res => {
+          let data = res.data.data;
+          this.arr = data.dEFAULT_DATA.valueUnits;
+          this.myData = data.iNSTALL_THE_DISTRIBUTION.valueUnits;
+          this.getMap();
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this.getMap();
-    });
-    // 超过6行滚动
-    let count1 = this.$(".left-top ul li").length;
-    if (count1 > 6) {
-      let dom1 = this.$(".left-top ul");
-      this.scroll(dom1);
-    }
-    let count2 = this.$(".right-top ul li").length;
-    if (count2 > 6) {
-      let dom2 = this.$(".right-top ul");
-      this.scroll(dom2);
-    }
-    let count3 = this.$(".left-bottom ul li").length;
-    if (count3 > 6) {
-      let dom3 = this.$(".left-bottom ul");
-      this.scroll(dom3);
-    }
-    let count4 = this.$(".right-bottom ul li").length;
-    if (count4 > 6) {
-      let dom4 = this.$(".right-bottom ul");
-      this.scroll(dom4);
-    }
+    this.getData("中国");
+    this.getMapData();
   }
 };
 </script>
@@ -573,19 +539,18 @@ export default {
   overflow: hidden;
 }
 .header {
-  width: 90%;
-  margin: 0 5%;
-  max-width: 1920px;
   background: url("../assets/img/header.png") center no-repeat;
   background-size: auto 100%;
+  margin-top: 10px;
+  height: 45px;
 }
 .header h1 {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   color: #6ff7f3;
-  padding-top: 20px;
   display: block;
+  letter-spacing: 1px;
 }
 .cube {
   padding-bottom: 0.4%;
@@ -596,7 +561,7 @@ export default {
 }
 .title-top {
   float: left;
-  margin-left: 100px;
+  margin-left: 10%;
   color: #46a6b5;
   /*width: 200px;*/
 }
@@ -615,13 +580,14 @@ export default {
 .company {
   float: right;
   /*width: 200px;*/
-  margin-right: 100px;
+  margin-right: 10%;
   height: 50px;
   line-height: 50px;
 }
 .company img {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
+  height: 100%;
 }
 .company .name {
   color: #fff;
@@ -629,15 +595,12 @@ export default {
   margin-left: 5px;
 }
 .center {
-  /*height: 80%;*/
   position: relative;
   z-index: 999;
   height: 0;
   padding-bottom: 41.7%;
-  /*box-sizing: content-box;*/
 }
 .bottom-info {
-  /*height: 150px;*/
   position: relative;
 }
 .my-map {
@@ -707,13 +670,11 @@ export default {
 .left-box {
   height: 100%;
   position: absolute;
-  left: 10%;
   top: 5%;
 }
 .right-box {
   height: 100%;
   position: absolute;
-  right: 9%;
   top: 5%;
 }
 .top {
@@ -724,23 +685,18 @@ export default {
 }
 .top,
 .bottom {
-  width: 160px;
   background: url("../assets/img/blue_border.png") center no-repeat;
   background-size: contain;
 }
 .left-box .middle {
   position: absolute;
   top: 25%;
-  left: -40%;
-  width: 160px;
   background: url("../assets/img/green_border.png") center no-repeat;
   background-size: contain;
 }
 .right-box .middle {
   position: absolute;
   top: 25%;
-  right: -40%;
-  width: 160px;
   background: url("../assets/img/green_border.png") center no-repeat;
   background-size: contain;
 }
@@ -755,11 +711,11 @@ export default {
   font-weight: bold;
 }
 .unit {
-  padding-bottom: 15%;
+  padding-bottom: 10%;
 }
 .left-box .title,
 .right-box .title {
-  padding-top: 15%;
+  padding-top: 12%;
 }
 p {
   text-align: center;
@@ -774,14 +730,12 @@ p {
 .left-bottom {
   width: 13%;
   position: absolute;
-  /*top: -25%;*/
   left: 6%;
   overflow: hidden;
 }
 .right-bottom {
   width: 13%;
   position: absolute;
-  /*top: -25%;*/
   right: 6%;
   overflow: hidden;
 }
@@ -792,38 +746,9 @@ p {
   right: 6%;
   overflow: hidden;
 }
-.left-top ul,
-.left-bottom ul,
-.right-top ul,
-.right-bottom ul {
-  height: 100%;
-}
-.left-top ul li,
-.left-bottom ul li,
-.right-bottom ul li,
-.right-top ul li {
-  color: #46a6b5;
-  height: 16.7%;
-}
-.left-top ul li p,
-.left-bottom ul li p,
-.right-bottom ul li p,
-.right-top ul li p {
-  width: 100%;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 @media screen and (max-width: 1300px) {
   .city-info-item .title {
     width: 15px;
-  }
-  .left-top ul li,
-  .left-bottom ul li,
-  .right-bottom ul li,
-  .right-top ul li {
-    height: 16.7px;
   }
   .left-top,
   .left-bottom,
@@ -838,16 +763,28 @@ p {
   .bottom-info {
     height: 100px;
   }
+  .top,
+  .bottom,
+  .middle {
+    width: 220px;
+    height: 121px;
+  }
+  .left-box {
+    left: 6%;
+  }
+  .right-box {
+    right: 5%;
+  }
+  .left-box .middle {
+    left: -29%;
+  }
+  .right-box .middle {
+    right: -29%;
+  }
 }
 @media screen and (min-width: 1300px) {
   .city-info-item .title {
     width: 20px;
-  }
-  .left-top ul li,
-  .left-bottom ul li,
-  .right-bottom ul li,
-  .right-top ul li {
-    height: 18.3px;
   }
   .left-top,
   .left-bottom,
@@ -856,22 +793,34 @@ p {
     max-height: 110px;
   }
   .left-bottom,
-  .right-bottom{
+  .right-bottom {
     top: 93.5%;
   }
   .bottom-info {
     height: 110px;
   }
+  .top,
+  .bottom,
+  .middle {
+    width: 220px;
+    height: 126px;
+  }
+  .left-box {
+    left: 6%;
+  }
+  .right-box {
+    right: 5%;
+  }
+  .left-box .middle {
+    left: -29%;
+  }
+  .right-box .middle {
+    right: -29%;
+  }
 }
 @media screen and (min-width: 1500px) {
   .city-info-item .title {
     width: 24px;
-  }
-  .left-top ul li,
-  .left-bottom ul li,
-  .right-bottom ul li,
-  .right-top ul li {
-    height: 20px;
   }
   .left-top,
   .left-bottom,
@@ -880,11 +829,29 @@ p {
     max-height: 120px;
   }
   .left-bottom,
-  .right-bottom{
+  .right-bottom {
     top: 93.5%;
   }
   .bottom-info {
     height: 120px;
+  }
+  .top,
+  .bottom,
+  .middle {
+    width: 280px;
+    height: 152px;
+  }
+  .left-box {
+    left: 6%;
+  }
+  .right-box {
+    right: 5%;
+  }
+  .left-box .middle {
+    left: -28%;
+  }
+  .right-box .middle {
+    right: -28%;
   }
 }
 </style>
